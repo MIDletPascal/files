@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Форум</title>
+		<link>http://midletpascal.at.ua/forum/</link>
+		<description>Форум</description>
+
+		<lastBuildDate>Thu, 28 Mar 2013 15:29:51 GMT</lastBuildDate>
+		<generator>uCoz Web-Service</generator>
+		<atom:link href="http://midletpascal.at.ua/forum/rss" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Все мои игры</title>
+			<link>http://midletpascal.at.ua/forum/3-8-1</link>
+			<pubDate>Thu, 28 Mar 2013 15:29:51 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/3&quot;&gt;Готовые проекты&lt;/a&gt;&lt;br /&gt;Описание темы: Игры которые я сделал.Вот выкладываю исходники.&lt;br /&gt;Автор темы: Wladymyr&lt;br /&gt;Автор последнего сообщения: Wladymyr&lt;br /&gt;Количество ответов: 0</description>
+			<content:encoded>Всё время я стремился сделать как можно больше бесплатных игр.Но мне в руки попал телефон с ОС Андроид, по этому я учусь писать игры мультиплатформенные(мульти платформенные - это приложения которые поддерживаются несколькими ОС), и я планирую делать на OS Windows, Linux, Android.Вот именно по этому выкладываю все свои доделанные проэкты на всеобщее обозрение. &lt;br /&gt; В файле имеются исходники следующих приложений: &lt;br /&gt; 1.&quot;Реальный сапер&quot; &lt;br /&gt; 2.&quot;Счастливый фермер&quot; &lt;br /&gt; 3.&quot;Космическое путешествие&quot; &lt;br /&gt; Скачать исходники можно &lt;a class=&quot;link&quot; href=&quot;http://midletpascal.at.ua/game/Wladymyr-Game.zip&quot; rel=&quot;nofollow&quot; target=&quot;_blank&quot;&gt;здесь!&lt;/a&gt; &lt;br /&gt; P.S. Сайт заброшеным небудет.Он будет развиватся дальше  &lt;img src=&quot;http://s68.ucoz.net/sm/2/smile.gif&quot; border=&quot;0&quot; align=&quot;absmiddle&quot; alt=&quot;smile&quot; /&gt;</content:encoded>
+			<category>Готовые проекты</category>
+			<dc:creator>Wladymyr</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/3-8-1</guid>
+		</item>
+	</channel>
+</rss>

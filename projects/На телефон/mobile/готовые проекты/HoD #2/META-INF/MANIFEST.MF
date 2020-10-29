@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 16.0-b13 (Sun Microsystems Inc.)
+MIDlet-1: NDGE Public,/img/icon.png,NDGE
+MIDlet-Vendor: Mahach_Muhammad
+Nokia-MIDlet-On-Screen-Keypad: no
+MIDlet-Name: HoD #2
+MIDlet-Version: 3.5
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+

@@ -1,0 +1,62 @@
+parameter 
+String path, Func reg,
+Func rgg, Func rgr,
+Func rgn, Func rgv,
+Func rgl, Func rgs,
+Func prr, Func prm,
+Func prh, Func rnc;
+var
+boolean minC,
+boolean minimized,
+Canvas cs,
+boolean ex;
+void prs(int key);
+{
+if(key.equal(-12)) ex=false;
+if(key.equal(-1)) System.gc();
+if(key.equal('*')) minC=true;
+}
+void paint(Graphics gr);
+{
+gr.setColor1(0,0,30);
+gr.fillRect(0,0,132,176);
+gr.setColor1(255,255,255);
+gr.drawString(String.concat(String.fromInt(int.div(int.mul(System.freeMemory(), 1500), System.totalMemory())),String.concat("/",String.fromInt(int.div(System.totalMemory(),1000)))),0,0,20);
+gr.setColor1(255,0,0);
+gr.fillArc(20,30,100,100,0,360);
+gr.setColor1(0,255,0);
+gr.fillArc(20,30,100,100,0,int.div(int.mul(System.freeMemory(), 360), System.totalMemory()));
+gr.setColor1(255,255,255);
+gr.drawString("Очистить",0,int.sub(176,15),20);
+}
+void onMaximize();
+{
+minimized = false;
+}
+void start();
+{
+prr.setParam(0, String.new7("Статистика"));
+prr.setParam(1, onMaximize);
+prr.run();
+cs=Canvas.new(paint);
+cs.setPress(prs);
+Display.setCurrent1(Display.getDisplay(),cs);
+ex=true;
+minC=false;
+while(ex)
+{
+if(minC)
+{
+minimized = true;
+prm.run();
+while(minimized) Thread.sleep(128);
+Display.setCurrent1(Display.getDisplay(),cs);
+minC=false;
+}
+Thread.sleep(1);
+cs.repaint0();
+}
+prh.setParam(0, onMaximize);
+prh.run();
+}
+end.

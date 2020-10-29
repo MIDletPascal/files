@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Ant-Version: 1.0
+Created-By: 16.0-b13 (Sun Microsystems Inc.)
+MIDlet-1: Imma Soft,/img/icon.png,NDGE
+MIDlet-Vendor: Imma Soft
+Nokia-MIDlet-On-Screen-Keypad: no
+MIDlet-Name: Michael Jackson
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.0
+MicroEdition-Profile: MIDP-2.0

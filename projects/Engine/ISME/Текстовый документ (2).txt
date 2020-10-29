@@ -1,0 +1,27 @@
+begin
+ShowInfo(s);
+end;
+
+		begin
+Color(255, 255, 255, 255);//Установка цвета шрифта меню
+Cls;
+	menu32.init;//Иниализация menu32
+	SetMenuWindow(0, 0, wi, hi);//Установка окна меню
+	LoadCursor(loadImage('/cursor.png'));//Загрузка курсора
+	MenuFonts(0, 0);
+	parse.line(links, '|');//Разделение строки (разделитель |)
+for i:=0 to parse.len-1 do AddItem(None, parse.get(i));//Добавление пункта меню
+		begin
+			DrawMenu;
+			Repaint;
+		end;	
+end;	
+
+		begin
+			ISRS:=openRecordStore('ISRS'); 
+
+			if addRecordStoreEntry(ISRS, integerToString(srposition))=-1 then Delay(1);
+
+		end;
+			closeRecordStore(ISRS);
+		end;	

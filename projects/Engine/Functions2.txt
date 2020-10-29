@@ -1,0 +1,20 @@
+procedure DrawFPS;
+begin
+ if fps > 50 then setcolor (0,255,0);
+ if fps <= 50 then setcolor (0,205,0);
+ if fps <= 30 then setcolor (0,155,0);
+ if fps <= 20 then setcolor (255,128,0);
+ if fps <= 15 then setcolor (255,0,0);
+ drawtext ('FPS: '+integertostring (fps),10,getheight - 25);
+end;
+
+procedure CountFPS;
+begin
+  if fps_time <= GetRelativeTimeMs then
+  begin
+    fps_time := GetRelativeTimeMs + 1000;
+    fps := fps_cur;
+    fps_cur := 0;
+  end;
+  fps_cur := fps_cur + 1;
+end;

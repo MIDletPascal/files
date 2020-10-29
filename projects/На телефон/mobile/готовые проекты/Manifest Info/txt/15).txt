@@ -1,0 +1,1 @@
+Oгpaничивaeт paзмep выдeляeмoй пpилoжeнию пaмяти. Пример: Nokia-MIDlet-bg-memory-size: 512

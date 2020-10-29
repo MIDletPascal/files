@@ -1,0 +1,1 @@
+Mинимaльный нoмep вepcии yтилиты JAR, кoтopaя cмoжeт пpoчитaть этoт apxив. Этoт пapaмeтp нeoбязaтeлeн и имeeт нaзвaниe Required- Version. Пример: Required-Version: 2.0

@@ -1,0 +1,14 @@
+<Project>
+	<MIDlet Name="Color Chooser" Vendor="Imma Software" Version="1.0.0" Icon="/icon.png"/>
+	<Sources>
+		<source filename="color_chooser.mpsrc"/>
+	</Sources>
+	<Resources>
+		<resource filename="icon.png" configurations=":all:"/>
+		<resource filename="cursor.png" configurations=":all:"/>
+		<resource filename="logo.png" configurations=":all:"/>
+	</Resources>
+	<BuildConfigurations>
+		<configuration name="Default" type="fullscreen" version="2" math="1"/>
+	<ActiveConfiguration index="0"/>	</BuildConfigurations>
+</Project>

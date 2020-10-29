@@ -1,0 +1,4 @@
+X&~
+
+XHTML, Extensible Hypertext Markup Language (расширяемый язык разметки гипертекста) - промежуточный вариант между стандартами XML и HTML 4.0.
+XML, Extensible Markup Language (расширяемый язык разметки) - принципиально новый стандарт, предложенный в 2000 году создателем языка HTML - консорциумом World Wide Web Consortium (смотреть W3C).&~ 

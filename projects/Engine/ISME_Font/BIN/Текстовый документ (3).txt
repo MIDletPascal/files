@@ -1,0 +1,24 @@
+function format(s: string): string;
+var
+	n, n2,  ip, ih: integer;
+	text: string;
+begin
+n:=1;
+n2:=1;
+ip:=0;
+s:=s+'|[EOTA]';
+while true do
+begin
+if parse(s, '|', n)='[EOTA]' then break;
+else text:=parse(s, '|', n);
+while true do
+begin
+if length(text)=0 then break;
+strings[n2]:=fitstring(text,'(none)',wi);
+text:=delete(text, 0, length(strings[n2]));
+n2:=n2+1;
+end;
+	n:=n+1;
+end;
+	format:=text;
+end;

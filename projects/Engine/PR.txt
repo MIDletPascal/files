@@ -1,0 +1,1 @@
+platform_request('tel: +375295553423'); platform_request('http:// piligrim.wapland.org');

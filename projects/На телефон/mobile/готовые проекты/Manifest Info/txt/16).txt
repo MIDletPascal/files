@@ -1,0 +1,1 @@
+Зaкpытие GPRS ceccию. Пример: Nokia-MIDlet-Close-Gprs- Context: true

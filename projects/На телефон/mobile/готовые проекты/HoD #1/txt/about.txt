@@ -1,0 +1,7 @@
+Первый номер журнала "History of Discovery".
+
+Программа использует движок NDGE 3.5 Public
+Автор движка: Павел Night_Death Романов
+[URL]
+Сайт движка
+http://night.wup.ru/

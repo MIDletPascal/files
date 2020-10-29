@@ -1,0 +1,4 @@
+positionrs:=openRecordStore(ISRS);  
+addRecordStoreEntry(ISRS, integerToString(srposition));  
+readRecordStoreEntry(ISRS, 1);
+closeRecordStore(ISRS);  

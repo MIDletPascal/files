@@ -1,0 +1,1 @@
+Компилятор приложения. Пример: Created-By: 1.6.0-b105 (Sun Microsystems Inc.)

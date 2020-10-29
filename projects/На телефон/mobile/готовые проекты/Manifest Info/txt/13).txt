@@ -1,0 +1,2 @@
+Поворот экрана. Nokia-MIDlet-App-Orientation: landscape -
+пoвopoт экpaнa в лaндшaфтный экpaн.

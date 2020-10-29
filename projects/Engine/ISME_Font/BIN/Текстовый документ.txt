@@ -1,0 +1,10 @@
+
+strings[n2]:=fitstring(text,'(none)',wi);
+
+if startwith(strings[n2], '[IMG ') then
+begin
+ih:=getImageHeight(images[stringtoInteger('delete(delete(strings[n2], length(strings[n2]-1, length(strings[n2])), 0, 5))')]);
+textheight:=textheight+ih;
+end;
+else textheight:=textheight+getStringHeight(strings[n2]);
+n2:=n2+1;

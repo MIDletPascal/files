@@ -1,0 +1,32 @@
+repeat //Управление
+	key:=KeyToAction(GetKeyPressed);
+	key2:=getKeyClicked;
+if key = GA_UP then //Вверх
+	begin
+	if selected = 0 then SetCursor(1);
+
+	else
+		begin
+			CursorUp;
+			DrawMenu;
+			Repaint;
+			Delay(100);
+		end;
+	end;
+if key = GA_DOWN then //Вниз
+	begin
+	if selected = 1 then SetCursor(0);
+	else
+		begin
+			CursorDown;
+			DrawMenu;
+			Repaint;
+			Delay(100);
+		end;
+	end;
+if key = GA_FIRE then break;
+	end;
+until false;
+
+						parse.line(options, '|');//Разделение строки (разделитель |)
+for i:=1 to parse.len do 

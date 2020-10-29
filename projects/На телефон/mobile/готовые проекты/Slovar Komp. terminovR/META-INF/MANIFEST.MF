@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Name: Словарь компьютерных терминов
+MIDlet-Icon: /icon.png
+Created-By: 1.4.2_03-b02 (Sun Microsystems Inc.)
+Ant-Version: 1.0
+MIDlet-Vendor: IMMA Soft
+MIDlet-1: Словарь компьютерных терминов, /icon.png, box.SmsBox
+MIDlet-Version: 1.0
+MicroEdition-Profile: MIDP-2.0
+ProviderID: empty

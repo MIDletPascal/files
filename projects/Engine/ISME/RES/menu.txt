@@ -1,0 +1,17 @@
+Подменю
+menu.mnu
+Слайдшоу
+slides.sld
+Пункт 3
+text.txt
+Пункт 3Пункт 3Пункт 3Пункт 3Пункт 3Пункт 3
+text.txt
+Пункт 4
+text.txt
+Пункт 5
+text.txt
+Пункт 6
+text.txt
+Выход
+[EXIT]
+###

@@ -1,0 +1,116 @@
+//любая кнопка
+function AnyKey: boolean;
+begin
+	AnyKey := (KeyToAction(GetKeyPressed) <> GA_NONE)or(GetKeyPressed <> 0);
+end;
+
+// ждем нажатия любой кнопки
+procedure WaitKey;
+begin
+	repeat until (KeyToAction(GetKeyPressed) <> GA_NONE)or(GetKeyPressed <> 0);
+end;
+
+// ждем нажатия и отпускания любой кнопки
+procedure WaitKeyPress;
+begin
+	WaitKey;
+	repeat until not AnyKey;
+end;
+
+// определяет тип звука по расширению (несколько типов, остальные можно добавить)
+function sndType(FileExt: string): string;
+
+begin
+	FileExt := Locase(FileExt);
+	sndType := '';
+	if FileExt = 'mid' then
+		sndType := 'audio/midi';
+	if FileExt = 'au' then
+		sndType := 'audio/basic';
+	if FileExt = 'mp3' then
+		sndType := 'audio/mpeg';
+	if FileExt = 'wav' then
+		sndType := 'audio/x-wav';
+	if FileExt = 'amr' then
+		sndType := 'audio/amr';
+	if FileExt = 'aac' then
+		sndType := 'audio/aac';
+end;
+
+
+// из 16-ричной в 10-ю
+function HexToInt(s: string): integer;
+var
+	i, l, reg, o, num, res: integer;
+	ch: char;
+begin
+	s := upcase(s);
+	res := 0;
+	reg := 1;
+	l := Length(s) - 1;
+	for i := 0 to l do
+	begin
+		ch := GetChar(s, l - i);
+		num := 0;
+		o := Ord(ch);
+		if (o >= 48)and(o <= 57) then
+			num := o - 48;
+		if (o >= 65)and(o <= 70) then
+			num := o - 55;
+		res := res + num * reg;
+		reg := reg * 16;
+	end;
+	HexToInt := res;
+end;
+
+
+// определение количества подстрок в строке
+function strCount(s, word: string): integer;
+var
+	i, n, l: integer;
+	ch: char;
+begin
+	s := s + word;
+	l := length(s);
+	n := 0;
+	i := 0;
+	while (l > 1)and(i < l) do
+	begin
+		ch := GetChar(s, i);
+		if ch = GetChar(word, 0) then
+begin
+if copy(s, i, i+length(word))=word then n := n + 1;
+ i := i + length(word);
+end;
+else i := i + 1;
+	end;
+	strCount := n;
+end;
+
+// типа TranslateColor
+
+function ARGBtoInt(a, r, g, b: integer): integer;
+begin
+	ARGBtoInt := b + g * 256 + r * 65536 + a * 16777216;
+end;
+
+function IntToHex(int: integer): string;
+var
+	res: string;
+	m: integer;
+begin
+	res := '';
+	while int <> 0  do
+	begin
+		m := int mod 16;
+		int := int div 16;
+		if m < 10 then
+			m := m + 48
+		else
+			m := m + 87;
+		res := Chr(m) + res;
+	end;
+	while Length(res) < 2 do
+		res := '0' + res;
+	IntToHex := res;
+end;

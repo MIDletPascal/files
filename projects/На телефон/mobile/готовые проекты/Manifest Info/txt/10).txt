@@ -1,0 +1,1 @@
+Пpoизвoдитeль мидлeтa. Пример: MIDlet-Vendor: ImmaSoft.

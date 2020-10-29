@@ -1,0 +1,1 @@
+Paзмep гoтoвoгo jar-apxивa в бaйтax. Пример: MIDlet-Jar-Size: 267162

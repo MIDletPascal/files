@@ -1,0 +1,1 @@
+URL нa cтpaницy в интepнeтe, гдe мoжнo yзнaть бoльшe инфopмaции o дaннoм мидлeтe (oфициaльный caйт пpoгpaммы, oф.caйт ee пpoизвoдитeля и т.п.) MIDlet-Info-URL: http:// www.javagames.ucoz.ru/

@@ -1,0 +1,238 @@
+﻿unit Text_Functions;
+
+interface
+	{ add public declarations here }
+
+implementation
+//Текстовые функции
+
+var
+stack: string; 
+
+//Перекодировка
+
+{--------------------------------}
+
+function win2utf(str: string): string; //Функция перекодировки из Windows-1252 в UTF
+
+{
+str - строка для перекодировки
+symbol - считываемый символ для перекодировки
+decoded_string - строка с перекодированными символами
+ASCII_code - ASCII-код символа symbol
+counter - счетчик, равный длине строки str
+}
+
+	var
+	symbol:char;
+	decoded_string:string;
+	ASCII_code, counter: integer; 	begin 	decoded_string:=''; 	for counter:=1 to length(str) do 		begin 		symbol:=getchar(str,(i-1));
+		ASCII_code:=ord(symbol);
+		if ASCII_code>122 then :=decoded_string+chr(ASCII_code+1104) 		else 		decoded_string:=decoded_string+getchar(str, counter-1); 		end; 		win2utf:=decoded_string; 		end;
+
+if ASCII_code>122 then decoded_string:=decoded_string+chr(ASCII_code+1104) 		else 		decoded_string:=decoded_string+getchar(str, counter-1);
+
+		end; 		win2utf:=decoded_string;
+		end;
+
+{--------------------------------}
+
+
+
+//Стек
+
+procedure AddElement(element: string; id: integer); //Добавить элемент в стек
+{
+element - элемент
+id - идентификатор стека
+chr(10) - разделяющий элемент, знак перевода каретки
+}
+begin
+if id=1 then
+begin
+stack:=stack+element+chr(10);
+end;
+end;
+
+function GetElement(id: integer); //Изъять элемент со стека
+{
+id - идентификатор стека
+element_start - начало элемента
+element_end - конец элемента
+chr(10) - разделяющий элемент, знак перевода каретки
+}
+var
+element_start, element_end: integer;
+begin
+if id=1 then
+begin
+element_start:=backsearch(stack, chr(10)) //Поиск разделяющего элемента;
+element_end:=length(stack)-1;
+GetElent:=copy(stack, element_start, element_end);
+end;
+end;
+
+function ClearStack(id: integer); //Очистить стэк
+{
+id - идентификатор стека
+}
+begin
+if id=1 then
+begin
+stack:='';
+end;
+end;
+
+//Работа с файлами
+
+function File_Exist(filename: string): boolean;
+{
+filename - название файла
+file_resource - ресурс для загрузки файла
+}
+var
+file_resource: resource;
+begin
+if GetChar(filename, 1)<>'/' then filename:='/'+filename;
+file_resource:=OpenResource(filename);
+if resourceAvailable(image_resource) then File_Exist:=true;
+else
+File_Exist:=false;
+end;
+
+LoadImage
+ReadText
+
+//Прочее
+
+function backsearch(str, word: string): integer; //Поиск с конца строки
+
+{
+str - исходная строка
+word - слово для поиска
+i - счетчик
+Если длина word больше str или же ничего не найдено возвращает -1
+}
+
+var
+i: integer;
+
+begin
+
+backsearch:=-1
+
+if length(word)<length(str) then
+begin
+i:=length(str)-1-length(word);
+
+for i to 0 do
+begin
+if copy(str, i, length(word))=word then break;
+i:=i-2
+end;
+
+backsearch:=i;
+
+end;
+
+end;
+
+function trimstring(str, symbol: string; width: integer): string;
+{
+str - исходная строка
+symbol - символ вставляемый в конце обрезанной строки, если символ не нужен пишется '(none)'
+width - ширина, под которую нужно подогнать строку s
+str_width - ширина обрезанной строки
+i - счетчик
+ch - считываемый символ
+str2 - обрезанная строка
+}
+var
+str_width, i: integer;
+ch: char;
+ws: string;
+
+begin str_width:= 0; i := 0;
+if TextWidth(str)>width then
+begin if locase(symbol)<>'(none)' then width:=width-TextWidth(symbol); 	while (true) do begin
+ch:=GetChar(str, i);
+str_width:= str_width+TextWidth(ch); if str_width > width then break; else
+
+str2:=str2+ch; i:=i+1;
+end; if locase(symbol)='(none)' then trimstring:= str2;
+
+else
+
+trimstring:= str2+symbol; end;
+
+else
+
+trimstring:=str; end;
+
+function startwith(str1, str2: string): boolean; //Проверка, начинается ли строка str1 со строки str2
+{
+str1 - исходная строка
+str2 - строка для проверки
+}
+begin
+startwith:=false;
+if copy(str1, 0, (length(str2)-1))=str2 then 
+startwith:=true;
+end;
+
+function trim(str :string):string;
+{
+str - исходная строка
+n - счетчик, конечным результатом которого будет начало предложения
+n2 - счетчик, конечным результатом которого будет конец предложения
+}
+var
+n, n2:integer;
+begin
+n:=0;
+n2:=length(str)-1;
+while GetChar(str, n)=' ' do n:=n+1;
+while GetChar(str, n2)=' ' do n2:=n2-1;
+trim:=copy(str, n, n2);
+end;
+
+function inline_meter(str, substr: string): integer; //Функция подсчета подстрок substr в строке str
+{
+str - исходная строка
+substr - подстрока для поиска
+n - счетчик
+}
+var
+n: integer;
+begin
+if length(str)<length(substr) then inline_meter:=-1;
+else
+begin
+repeat
+str:=copy(str, pos(str, substr),length-1);
+n:=n+1;
+until (pos(str, substr)=-1);
+end;
+end;
+
+function parse(str, symbol: string; number: integer); //Функция разбиения слова на элементы
+{
+str - исходная строка
+symbol - разделительный символ
+number - номер элемента
+n - счетчик
+}
+var
+n: integer;
+begin
+for n:=0 to number-1 do
+begin
+str:=copy(str, 0, pos(str, symbol)+length(symbol));
+end;
+parse:=copy(str, 0, pos(str, symbol)-1);
+end;
+
+initialization
+	{ add initialization code here }
+end.
+ 

@@ -1,0 +1,10 @@
+Подменю|menu.mnu|idea.png|
+Слайдшоу|slides.sld|idea.png|
+Пункт 3|text.txt|idea.png|
+Пункт 3|text.txt|idea.png|
+Пункт 4|text.txt|idea.png|
+Пункт 5|text.txt|idea.png|
+Пункт 6|text.txt|idea.png|
+Выход|[EXIT]|exit.png|
+###
+  

@@ -1,0 +1,261 @@
+program FitnessCalc;
+{
+
+BMI, BMR and calorie calculator
+Philippine Copyright(c)2011  by Noel C. Posicion
+Free to modify and distribute!
+
+1st Author    : Noel C. Posicion
+2nd Author    : ??
+
+Last Modified : May 19, 2011
+
+MIDlet Type   : NokiaAIP FullScreen
+NIDP Version  : MIDP-1.0
+Real Numbers  : Floating-point
+Icon          : Preferrably a picture of a scale, 64 x 64 pixels
+
+}
+var
+  img: image;
+  x, y, yo, w, h, dir: integer;
+  imgw, imgh, fh: integer;
+  cur1, cur2, me, en, hb, mj, sex, male, feml: integer;
+  cm, mr, actv, act1, act2, act3, act4, act5: integer;
+  bmi, bmr, cal, wt, ht, yr, cal1, cal2, wt1, wt2: real;
+  r, s: string;
+procedure CtrStr(s: string; y: integer);
+begin
+  drawtext(s,(w-getstringwidth(s))/2,y);
+end;
+function bmrcalc: real;
+begin
+  if cur2 = hb then
+  begin
+    // Use Harris-Benedict equation
+    if choiceisselected(sex,male) then
+    bmrcalc := 66.473 + (13.7516 * wt) + (500.33 * ht) - (6.755 * yr) else
+    bmrcalc := 655.0955 + (9.5634 * wt) + (184.96 * ht) - (4.6756 * yr);
+  end
+  else
+  begin
+    // Use Mifflin-St. Jeor equation
+    if choiceisselected(sex,male) then
+    bmrcalc := (10 * wt) + (625 * ht) - (5 * yr) + 5 else
+    bmrcalc := (10 * wt) + (625 * ht) - (5 * yr) - 161;
+  end;
+end;
+function calorie: real;
+begin
+  // Adjust calorie according to activity level using Harris-Benedict Principle
+  if choiceisselected(actv,act1) then calorie := 1.200 * bmr else
+  if choiceisselected(actv,act2) then calorie := 1.375 * bmr else
+  if choiceisselected(actv,act3) then calorie := 1.550 * bmr else
+  if choiceisselected(actv,act4) then calorie := 1.725 * bmr else
+  calorie := 1.900 * bmr;
+end;
+procedure Analyze;
+var
+  age, weight, height, n: integer;
+  calc, back, ok, click: command;
+  ags, wts, hts, t: string;
+begin
+  clearform;
+  setformtitle('Fitness Calculator 1.5');
+  if cur1 = en then
+  begin
+    weight := formaddtextfield('Weight (lb): ','',4,tf_numeric);
+    height := formaddtextfield('Height (in): ','',4,tf_numeric);
+  end
+  else
+  begin
+    weight := formaddtextfield('Weight (kg): ','',4,tf_numeric);
+    height := formaddtextfield('Height (cm): ','',4,tf_numeric);
+  end;
+  age := formaddtextfield('Age: ','',4,tf_numeric);
+  sex := formaddchoice('Sex:',ch_exclusive);
+  male := choiceappendstring(sex,'Male');
+  feml := choiceappendstring(sex,'Female');
+  actv := formaddchoice('Activity Level',ch_exclusive);
+  act1 := choiceappendstring(actv,'Sedentary');
+  act2 := choiceappendstring(actv,'Lightly active');
+  act3 := choiceappendstring(actv,'Moderately active');
+  act4 := choiceappendstring(actv,'Very active');
+  act5 := choiceappendstring(actv,'Extra active');
+  mr := formaddchoice('BMR Calculator',ch_exclusive);
+  hb := choiceappendstring(mr,'Harris-Benedict');
+  mj := choiceappendstring(mr,'Mifflin-St. Jeor');
+  calc := createcommand('Calculate',cm_ok,1);
+  back := createcommand('Back',cm_back,2);
+  addcommand(calc);
+  addcommand(back);
+  repaint;
+  repeat
+    repeat
+      delay(200);
+      click := getclickedcommand;
+    until click <> emptycommand;
+    if click = calc then
+    begin
+      if choiceisselected(mr,hb) then cur2 := hb else cur2 := mj;
+      wt := stringtoreal(formgettext(weight),10);
+      ht := stringtoreal(formgettext(height),10);
+      yr := stringtoreal(formgettext(age),10);
+      s := '';
+      if wt < 1 then s := s + '? Weight'#10;
+      if ht < 1 then s := s + '? Height'#10;
+      if yr < 1 then s := s + '? Age'#10;
+      if s <> '' then s := 'Error!'#10#10 + s else
+      begin
+        ht := ht / 100;
+        if cur1 = en then
+        begin
+          wt := 0.45359237 * wt;
+          ht := 2.54 * ht;
+        end;
+        bmi := wt / (ht * ht);
+        if bmi < 16.0 then r := 'severely underweight!' else
+        if bmi < 18.5 then r := 'underweight.' else
+        if bmi < 25.0 then r := 'normal.' else
+        if bmi < 30.0 then r := 'overweight.' else
+        if bmi < 35.0 then r := 'obese class 1.' else
+        if bmi < 40.0 then r := 'obese class 2.' else
+        r := 'morbid obesity!';
+        bmr := bmrcalc; cal := calorie;
+        n := trunc(100*frac(bmi));
+        t := integertostring(n);
+        if n < 10 then t := '0' + t;
+        s := s + 'BMI = ' + integertostring(trunc(bmi))+ '.' + t + #10;
+        s := s + 'BMR = ' + integertostring(trunc(bmr)) + #10#10;
+        if (bmi < 25) and (bmi >= 18.5) then
+        begin
+          cal := cal / 1000;
+          n := trunc(1000*frac(cal));
+          t := integertostring(n);
+          if n < 10 then t := '0' + t;
+          if n < 100 then t := '0' + t;
+          s := s + 'Congratulations! '#10#10;
+          s := s + 'You have normal body mass index. '#10#10;
+          s := s + 'Consume about ';
+          s := s + integertostring(trunc(cal)) + '.' + t;
+          s := s + ' kcal daily to maintain your weight.';
+        end
+        else
+        begin
+          wt1 :=  18.5 * ht * ht; wt := wt1; bmr := bmrcalc; cal1 := calorie;
+          wt2 :=  25.0 * ht * ht; wt := wt2; bmr := bmrcalc; cal2 := calorie;
+          if bmi >= 40 then
+          s := s + 'You have morbid obesity!' else s := s + 'You are ' + r + ' ';
+          s := s + #10#10;
+          s := s + 'Maintain weight between ' + integertostring(trunc(wt1)) + ' and ' + integertostring(trunc(wt2)) + ' kg ';
+          s := s + 'by consuming daily calorie of ' + integertostring(trunc(cal1)) + ' to ' + integertostring(trunc(cal2));
+          if bmi > 25 then s := s + ' only';
+          s := s + '. '#10#10;
+          s := s + 'Please consult a health professional. ';
+        end;
+        s := s + #10#10;
+        s := S + '_____ '#10;
+        s := s + 'Ref: '#10#10;
+        s := s + 'Body Mass Index (BMI) formula by Ancel Keys '#10#10;
+        s := s + 'Basal Metabolic Rate (BMR) arrived using ';
+        if cur2 = hb then s := s + 'Harris-Benedict' else s := s + 'Mifflin-St. Jeor';
+        s := s + ' Equation '#10;
+        s := S + '_____ '#10;
+        s := s + 'Disclaimer: '#10#10;
+        s := s + 'Results are approximate and NOT intended for clinical use!';
+      end;
+      showalert('Evaluation:',s,img,alert_info);
+      repeat delay(200) until getclickedcommand <> emptycommand;
+      showform;
+    end;
+  until click = back;
+end;
+
+procedure Intro;
+begin
+  s := '';
+  s := s + 'BMI stands for Body Mass Index. It was introduced 1972 by Ancel Keys to determine body fat. '#10#10;
+  s := s + 'BMR is Basal Metabolic Rate, a measure of calorie expended by a healthy person in a lab-controlled ';
+  s := s + 'environment for 24 hours. It could be used to estimate daily calorie intake to achieve or ';
+  s := s + 'retain a desired weight. '#10#10;
+  s := s + 'Harris-Benedict and Mifflin-St. Jeor are equations used to get BMR without going to lab. ';
+  s := s + 'They were formulated 1919 and 1990 respectively. '#10#10;
+  s := s + 'BMI results are applicable only to persons 18 to 65 years old and recommended daily calorie ';
+  s := s + 'requirements may apply only to "healthy" persons. Always consult a health professional before ';
+  s := s + 'adjusting to a diet or planning an activity. '#10#10;
+  s := s + 'Disclaimer: '#10#10;
+  s := s + 'Calculation results are not intended for clinical use! '#10#10;
+  s := s + 'By Lemniscatus '#10;
+  s := s + 'MIDletPascal hobbyist';
+  showalert('Trivia:',s,img,alert_info);
+  repeat delay(200) until getclickedcommand <> emptycommand;
+  showform;
+end;
+
+procedure Main;
+var
+  choice: integer;
+  calc, back, click: command;
+begin
+  repeat
+    clearform;
+    setformtitle('Fitness Calculator 1.5');
+    cm := formaddchoice('Input Unit',ch_exclusive);
+    en := choiceappendstring(cm,'English');
+    me := choiceappendstring(cm,'Metric');
+    calc := createcommand('Ok',cm_ok,1);
+    back := createcommand('Exit',cm_back,2);
+    addcommand(calc);
+    addcommand(back);
+    repaint;
+    repeat
+      delay(200);
+      click := getclickedcommand;
+    until click <> emptycommand;
+    if click = calc then
+    begin
+      if choiceisselected(cm,en) then cur1 := en else cur1 := me;
+      Analyze;
+    end;
+  until click = back;
+end;
+
+begin
+  img := loadimage('/icon.png');
+  imgw := getimagewidth(img);
+  imgh := getimageheight(img);
+  w := getwidth;
+  h := getheight;
+  setcolor(0,0,0);
+  fillrect(0,0,w,h);
+  x := (w - imgw) / 2;
+  y := (h - imgh)/ 3;
+  drawimage(img,x,y);
+  setfont(font_face_system,font_style_bold,font_size_large);
+  setcolor(255,0,0);
+  CtrStr('L.E.M.N.I.S.C.A.T.U.S',(y-getstringheight('L'))/2);
+  setfont(font_face_system,font_style_plain,font_size_small);
+  fh := getstringheight('Pp');
+  y := y + imgh + fh / 3;
+  CtrStr('BMI, BMR ,and Calorie Calculator',y);
+  setcolor(255,255,255);
+  CtrStr('(c)2011 All Rights Reserved',y+fh);
+  CtrStr('FREEWAREE',y+2*fh);
+  repaint;
+  delay(1250);
+  Intro;
+  Main;
+  showcanvas;
+  setcolor(0,0,0);
+  fillrect(0,y,w,h);
+  setcolor(255,255,255);
+  CtrStr('This is free software but you',y);
+  CtrStr('may wish to donate any amount',y+fh);
+  CtrStr('to support amateur Pascal',y+2*fh);
+  CtrStr('programmers.',y+3*fh);
+  setcolor(0,128,0);
+  CtrStr('E-mail: sem26k@yahoo.com',y+4*fh+fh/4);
+  repaint;
+  while getkeypressed = ke_none do delay(200);
+  halt;
+end.

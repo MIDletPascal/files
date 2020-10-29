@@ -1,0 +1,349 @@
+	{
+		Поддерживаемые функции:
+		-
+		-
+		-
+		-
+		-
+		-
+		-
+	}
+unit menu;
+
+interface
+
+	procedure MainMenu;
+
+	procedure ShowInfo(s: string);
+
+	procedure Loading;
+	
+	procedure Cls;
+
+implementation
+
+uses menu32, vscroll, font32, resloader, parse, safeload;
+
+var
+	 wi, hi, key, key2, titlenum, menunum: integer;
+		{
+			i-
+			wi-высота экрана
+			hi-ширина экрана
+			key-клавиши GameAction
+			key2-клавиши клика
+			titlenum-номер заголовка в массиве заголовков
+			menunum-номер файла меню в массиве названий файлов меню
+		}
+		
+	menu, mtitlestr: string;
+		{
+			menu-файл меню
+			mtitlestr-заголовок
+		}
+
+	mtitle, mroot: array[1..50] of string;
+		{
+			mtitle-массив заголовков
+			mroot-заголовок массив названий файлов меню
+		}
+
+
+procedure Loading;	//Иниализация
+
+var
+	start:integer;
+	{
+		start-время начала отрисовки логотипа
+	}
+begin
+	Cls;//Очистка экрана
+	setColor(255, 255, 255);//Установка белого цвета
+	drawText('Загрузка', (GetWidth - getStringWidth('Загрузка'))/2, GetHeight - getStringHeight('Загрузка'));//Рисование надписи 'Загрузка'
+	repaint;
+	wi:=GetWidth;
+	hi:=GetHeight;
+	font32.init(1);//Иниализация font32
+	Font(0);
+	LoadFont('Verdana10');
+	menu:='main.txt';//Установка главного меню
+	menunum:=1;//Установка номера файла меню в массиве названий файлов меню
+	titlenum:=1;//Установка номера заголовка в массиве заголовков
+	mtitlestr:='Меню';//Установка заголовка главного меню
+	Loadvscroll(LoadImage('/vscroll.png'));//Загрузка скроллера
+	vscroll.SetOffset(4);//Установка отступа от краев
+	Cls;//Очистка экрана
+	drawImage(loadImage('/logo.png'), (GetWidth-GetImageWidth(loadImage('/logo.png')))/2, (GetHeight-GetImageHeight(loadImage('/logo.png')))/2);//Отрисовка логотипа
+	repaint;    
+	start:=getRelativeTimeMs;//Время начала отрисовки логотипа
+repeat
+	key:=KeyToAction(GetKeyPressed);
+if key=GA_FIRE then break;//Если нажата клавиша FIRE, то выход из цикла
+until getRelativeTimeMs-start=5000;
+	MainMenu;//Вызов процедуры построения меню
+end;
+
+
+function LoadText(fn: string): string; //Загрузка текста из файла
+
+var
+	imgnum: integer;
+	{
+		imgnum-номер изображения в массиве изображений
+	}
+		
+	res: resource;
+	{
+		res-загружаемый ресурс
+	}
+		
+	line, line2: string;
+	{
+		line-читаемая строка
+		line2-весь текст
+	}
+begin
+	res:=OpenResource('/'+fn); line2:='';//Открытие ресурса
+repeat
+	line:=ReadLine(res);//Чтение строки
+if line='###' then break;//Выход из цикла, если читаемая строка равна ###
+if line='#' then line2:=line2+' '+chr(13);//Перевод строки, если читаемая строка равна #
+else
+	begin
+	if line='[IMG]' then//Добавление изображения, если читаемая строка равна [IMG]
+		begin
+			line:=ReadLine(res);
+			AddImage(safely_load_image('/' + line));//Безопасная загрузка изображения в массив
+			line2:=line2+' '+chr(13)+'[IMG' + imgnum + ']';//Добавление метки с номером изображения
+			imgnum:=imgnum+1;
+    end;
+	else line2:=line2+' '+chr(13)+win2utf(line);
+	end;
+until false;
+	CloseResource(res);//Закрытие ресурса
+	LoadText := line2 + ' ';
+end;
+
+
+procedure Cls;	//Процедура очистки экрана
+begin
+	SetColor(72,73,77);
+	FillRect(0,0,wi,hi);
+end;
+
+
+procedure Rec; //Процедура записи данных в массив
+begin
+	mtitle[titlenum]:=mtitlestr;//Запись заголовка
+	mroot[menunum]:=menu;//Запись имени файла меню
+end;
+
+
+procedure MainMenu; //Главное меню
+
+var
+	name,root,root2,icon,line,fname,extra: string;
+	{
+		name-Название пункта меню
+		root-Значение пункта меню
+		root2-Значение выбранного пункта
+		icon-Иконка пункта меню
+		line-Читаемая строка
+		fname-Название значения выбранного пункта
+		extra-Расширение значения выбранного пункта
+	}
+
+	quantity,itemheight: integer;
+	{
+		quantity-Количество пунктов
+		itemheight-Высота пунктов
+	}
+
+	cursor: image;
+	{
+		cursor-Картинка курсора
+	}
+begin
+	Color(255, 255, 255, 255);//Установка цвета шрифта меню
+	mtitle[1]:='Меню';
+	mroot[1]:='main.txt';
+	Cls;//Очистка экрана
+	menu32.init;//Иниализация menu32
+	SetMenuWindow(0, 20, wi - VScrollWidth, hi-20);//Установка окна меню
+	OpenRes(mroot[menunum]);//Открытие ресурсного файла меню
+	LoadCursor(loadImage('/cursor.png'));//Загрузка курсора
+	MenuFonts(0, 0);
+	itemheight:=getImageHeight(loadImage('/cursor.png'));
+	quantity:=0;
+while (true) do//Бесконечный цикл
+	begin
+		line:=resloader.ReadLine;//Чтение строки
+	if (line = '###') then break;//Выход из цикла, если читаемая строка равна ###
+		parse.line(line, '|');//Разделение строки (разделитель |)
+		name:=win2utf(parse.get(0));//берем первый параметр т.е. название
+		root:=win2utf(parse.get(1));//берем второй параметр т.е. путь
+		icon:=win2utf(parse.get(2));//берем третий параметр для выбота иконки меню
+		AddItem2(LoadImage('/' + icon), name,root);//Добавление пункта меню
+		quantity:=quantity + 1
+	end;
+	CloseRes;//Закрытие ресурсного файла меню
+	DrawMenu;//Отрисовка меню
+	SetColor(255,255,255);//Установка белого цвета
+	DrawString(mtitle[titlenum], (wi - getStringWidth(mtitle[titlenum]))/2, 1);//Отрисовка зоголовка меню
+	SetVScroll(wi - VScrollWidth, 15, hi  - 30);//Установка положения и длины скроллера
+	DrawVScroll(0, 	hi  - 30, 0, (hi-30)/quantity);//Отрисовка скроллера
+	Repaint;
+	Delay(150);
+repeat //Управление
+	key:=KeyToAction(GetKeyPressed);
+	key2:=getKeyClicked;
+if key2 = KE_STAR then //Назад
+	begin
+	if menunum = 1 then Halt;//Если номер файла меню равен одному (menunum = 1), то выход
+		titlenum:=titlenum - 1;
+		menunum:=menunum - 1;
+		MainMenu;
+	end;
+if key = GA_UP then //Вверх
+	begin
+	if selected = 0 then SetCursor(quantity);
+	else
+		begin
+			CursorUp;
+			DrawMenu;
+			DrawVScroll(0, hi  - 30, ((hi-30)/quantity)*selected+1, (hi-30)/quantity);
+			Repaint;
+			Delay(150);
+		end;
+	end;
+if key = GA_DOWN then //Вниз
+	begin
+	if selected = quantity - 1 then SetCursor(-1);
+	else
+		begin
+			CursorDown;
+			DrawMenu;
+			DrawVScroll(0, hi  - 30, ((hi-30)/quantity)*selected+1, (hi-30)/quantity);
+			Repaint;
+			Delay(150);
+		end;
+	end;
+if key = GA_FIRE then //Выбор
+	begin
+		root2:=SelectedValue; //Значение выбранного пункта
+	if root2 = '[EXIT]' then Halt;
+		parse.line(root2, '.');//Разделение строки (Разделитель .)
+		fname:=win2utf(parse.get(0));//Название значения выбранного пункта
+		extra:=win2utf(parse.get(1));//Расширение значения выбранного пункта
+	if extra = 'mnu' then //Если расширение файла - mnu, то выбраннй файл - меню
+		begin
+			titlenum:=titlenum + 1;
+			menunum:=menunum + 1;
+			mtitlestr:=SelectedItem;
+			menu:=fname + '.txt';
+			Rec;//Запись данных в массив
+			MainMenu;
+		end;
+	if extra = 'txt' then //Если расширение файла - txt, то выбраннй файл - текст
+		begin
+			ShowInfo(LoadText(fname + '.txt'));
+			MainMenu;
+		end;
+	end;
+if key=GA_GAMED then //Просмотр полного имени  файла
+	begin
+		Cls;//Очистка экрана
+		ShowInfo(SelectedItem);
+		MainMenu;
+	end;
+until false;
+end;
+
+
+Procedure ShowInfo(s: string); 
+
+
+var
+	text_height: integer;
+	{
+		cursor-Картинка курсора
+	}
+	hh: boolean;
+	{
+		hh-Флаг размера текста (если размер текста меньше или равен размеру области отрисовки текстаы, то hh:=false)
+	}
+begin 
+	Color(255, 255, 0, 0);//Установка цвета шрифта текста
+	Font(0);//Установка шрифта текста
+	hh:=false;
+	SetVScroll(wi - VScrollWidth, 20, hi  - 40); // Установка положения и длины скроллера
+	TextWindow(2, 20, wi - VScrollWidth - 2, hi - 40); // Установка текстового окна (на весь экран за вычетом ширины скроллера)
+	text_height:=Format(s, 0);
+	Cls;
+	DrawTextWindow;
+if text_height < hi  then hh:=true;
+if hh = false then DrawVScroll(0, text_height, GetPosition, hi); 
+	Repaint;
+	Delay(200);
+repeat // Главный цикл программы		
+	key:=KeyToAction(GetKeyPressed);
+	key2:=getKeyClicked;
+if hh = false then
+	begin
+	if key = GA_RIGHT then
+		begin
+			MoveDown(hi-16);
+			Cls;
+			DrawTextWindow;
+			DrawVScroll(0, text_height, GetPosition, hi);
+		end;// Экран вверх(hi) - высота шрифта(16)
+	if key = GA_DOWN then
+		begin
+			MoveDown(16);
+			Cls;
+			DrawTextWindow;
+			DrawVScroll(0, text_height, GetPosition, hi);
+		end;// Переместить на 1 строку текста(16)вверх 
+	if key = GA_LEFT then
+		begin
+			MoveUp(hi-16);
+			Cls;
+			DrawTextWindow;
+			DrawVScroll(0, text_height, GetPosition, hi);
+		end;// Экран вниз(hi) - высота шрифта(16)
+	if key = GA_UP then 
+		begin
+			MoveUp(16);
+			Cls;
+			DrawTextWindow;
+			DrawVScroll(0, text_height, GetPosition, hi);
+		end;// Переместить на 1 строку текста(16)вниз 
+	if key2 = KE_KEY3 then 
+		begin
+			MoveUp(text_height);
+			Cls;
+			DrawTextWindow;
+			DrawVScroll(0, text_height, GetPosition, hi);
+		end;
+	if key2 = KE_KEY9 then 
+		begin
+			MoveDown(text_height);
+			Cls;
+			DrawTextWindow;
+			DrawVScroll(0, text_height, GetPosition, hi);
+		end;
+		Repaint;
+	end;	
+if key = GA_FIRE then
+	begin
+		RemoveImages;
+		break;//Выход
+	end;
+until false;
+end;
+	
+	
+initialization
+	{ инициализация }
+end. 
+ 

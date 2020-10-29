@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Форум</title>
+		<link>http://midletpascal.at.ua/forum/</link>
+		<description>Форум</description>
+
+		<lastBuildDate>Sun, 02 Nov 2014 07:50:57 GMT</lastBuildDate>
+		<generator>uCoz Web-Service</generator>
+		<atom:link href="http://midletpascal.at.ua/forum/rss" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Помощь</title>
+			<link>http://midletpascal.at.ua/forum/4-13-1</link>
+			<pubDate>Sun, 02 Nov 2014 07:50:57 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Описание темы: Помагаем друг другу.&lt;br /&gt;Автор темы: kirillza&lt;br /&gt;Автор последнего сообщения: Wladymyr&lt;br /&gt;Количество ответов: 1</description>
+			<content:encoded>Здесь вы можете задать свои вопросы. &lt;br /&gt; И мы постараемся на них ответить. &lt;br /&gt;&lt;br /&gt; Помогите с кодом. &lt;br /&gt; Допустим: &lt;br /&gt; Пишем текст. &lt;br /&gt; Нажимаем 5. &lt;br /&gt; Очищаем экран. &lt;br /&gt; Выводим слово. &lt;br /&gt; Как это сделать?</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>kirillza</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-13-1</guid>
+		</item>
+		<item>
+			<title>Трех-мерный массив</title>
+			<link>http://midletpascal.at.ua/forum/4-10-1</link>
+			<pubDate>Wed, 07 Aug 2013 13:53:51 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Автор темы: избранный13&lt;br /&gt;Автор последнего сообщения: избранный13&lt;br /&gt;Количество ответов: 4</description>
+			<content:encoded>Трех-мерный массив как его сделать? &lt;br /&gt; Ну точнее DrawMap(прорисовка карты)</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>избранный13</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-10-1</guid>
+		</item>
+		<item>
+			<title>леталка</title>
+			<link>http://midletpascal.at.ua/forum/4-9-1</link>
+			<pubDate>Tue, 02 Jul 2013 17:13:59 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Автор темы: romeohaker&lt;br /&gt;Автор последнего сообщения: romeohaker&lt;br /&gt;Количество ответов: 2</description>
+			<content:encoded>хочу сделать простенькую леталку. как сделать стрельбу и AI.желательны примеры</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>romeohaker</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-9-1</guid>
+		</item>
+		<item>
+			<title>вопрос №2</title>
+			<link>http://midletpascal.at.ua/forum/4-7-1</link>
+			<pubDate>Thu, 28 Mar 2013 09:26:38 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Описание темы: ааа&lt;br /&gt;Автор темы: Lincor&lt;br /&gt;Автор последнего сообщения: Wladymyr&lt;br /&gt;Количество ответов: 7</description>
+			<content:encoded>&lt;!--uzcode--&gt;&lt;div class=&quot;bbCodeBlock&quot;&gt;&lt;div class=&quot;bbCodeName&quot; style=&quot;padding-left:5px;font-weight:bold;font-size:7pt&quot;&gt;Код&lt;/div&gt;&lt;div class=&quot;codeMessage&quot; style=&quot;border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight&lt;5?this.style.height:scrollHeight&gt;200?&apos;200px&apos;:&apos;&apos;+(this.scrollHeight+5)+&apos;px&apos;);&quot;&gt;&lt;!--uzc--&gt;procedure save_game; &lt;br /&gt; var root,name,fname:string; &lt;br /&gt; i:integer; &lt;br /&gt; begin &lt;br /&gt; root:=getcatalog(get_roots&amp;#41;; &lt;br /&gt; name:=&apos;warpeople&apos;; &lt;br /&gt; fname:=root+name+&apos;.sav&apos;; &lt;br /&gt; delete_file(fname&amp;#41;; &lt;br /&gt; file_create(fname&amp;#41;; &lt;br /&gt; if open_file(fname&amp;#41;=1 then &lt;br /&gt;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;write_byte(1&amp;#41;; write_byte(x&amp;#41;; write_byte(y&amp;#41;; write_byte(y2&amp;#41;; write_byte(povorot&amp;#41;; write_byte(speed_x&amp;#41;; write_byte(speed_y&amp;#41;; write_byte(life&amp;#41;; write_byte(score&amp;#41;; write_byte(killed&amp;#41;; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;write_byte(2&amp;#41;; write_byte(plr_weapon&amp;#41;; write_byte(ammo&amp;#41;; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;for i:=0 to 23 do &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;write_byte(3&amp;#41;; write_byte(en&amp;#91;i].typ&amp;#41;; write_byte(en&amp;#91;i].x&amp;#41;; write_byte(en&amp;#91;i].y&amp;#41;; write_byte(en&amp;#91;i].weapon&amp;#41;; write_byte(en&amp;#91;i].hp&amp;#41;; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;flush; &lt;br /&gt;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt; end; &lt;br /&gt;&lt;br /&gt; procedure load_game; &lt;br /&gt; var root,name,fname:string; &lt;br /&gt; i,t:integer; &lt;br /&gt; begin &lt;br /&gt; root:=getcatalog(get_roots&amp;#41;; &lt;br /&gt; name:=&apos;warpeople&apos;; &lt;br /&gt; fname:=root+name+&apos;.sav&apos;; &lt;br /&gt; if file_exists(fname&amp;#41;=1 then &lt;br /&gt; if open_file(fname&amp;#41;=1 then &lt;br /&gt;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;if t=1 then &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;x:=read_byte; y:=read_byte; y2:=read_byte; povorot:=read_byte; speed_x:=read_byte; speed_y:=read_byte; life:=read_byte; score:=read_byte; killed:=read_byte; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;if t=2 then &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;plr_weapon:=read_byte; ammo:=read_byte; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;if t=3 then &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;for i:=0 to 23 do &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;begin &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;en&amp;#91;i].typ:=read_byte; en&amp;#91;i].x:=read_byte; en&amp;#91;i].y:=read_byte; en&amp;#91;i].weapon:=read_byte; en&amp;#91;i].hp:=read_byte; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt;&amp;nbsp;&amp;nbsp;end; &lt;br /&gt; end;&lt;!--/uzc--&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--/uzcode--&gt; &lt;br /&gt;&lt;br /&gt; почему-то при загрузке все загружаемые переменные равны 0</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>Lincor</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-7-1</guid>
+		</item>
+		<item>
+			<title>помощь</title>
+			<link>http://midletpascal.at.ua/forum/4-6-1</link>
+			<pubDate>Tue, 19 Mar 2013 03:52:41 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Описание темы: не работает&lt;br /&gt;Автор темы: Lincor&lt;br /&gt;Автор последнего сообщения: Wladymyr&lt;br /&gt;Количество ответов: 1</description>
+			<content:encoded>программа не работает при попытке установить прямоугольник. &lt;br /&gt;&lt;br /&gt; &lt;!--uzcode--&gt;&lt;div class=&quot;bbCodeBlock&quot;&gt;&lt;div class=&quot;bbCodeName&quot; style=&quot;padding-left:5px;font-weight:bold;font-size:7pt&quot;&gt;Код&lt;/div&gt;&lt;div class=&quot;codeMessage&quot; style=&quot;border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight&lt;5?this.style.height:scrollHeight&gt;200?&apos;200px&apos;:&apos;&apos;+(this.scrollHeight+5)+&apos;px&apos;);&quot;&gt;&lt;!--uzc--&gt;program SelectIT; &lt;br /&gt; var net:array&amp;#91;0..5,0..5] of boolean; //сетка &lt;br /&gt; x,y:integer; //координаты курсора &lt;br /&gt; i,j,key:integer; &lt;br /&gt;&lt;br /&gt; begin &lt;br /&gt; repeat &lt;br /&gt; setcolor(0,0,0&amp;#41;; &lt;br /&gt; fillrect(0,0,getwidth,getheight&amp;#41;; &lt;br /&gt; setcolor(255,255,255&amp;#41;; &lt;br /&gt; for i:=0 to 5 do &lt;br /&gt; for j:=0 to 4 do &lt;br /&gt; drawrect(i*getwidth/5,j*getwidth/5,getwidth/5,getwidth/5&amp;#41;; &lt;br /&gt; key:=keytoaction(getkeyclicked&amp;#41;; &lt;br /&gt; if key=GA_RIGHT then if x&lt;(getwidth-getwidth/5&amp;#41; then x:=x+getwidth/5; &lt;br /&gt; if key=GA_LEFT then if x&gt;0 then x:=x-getwidth/5; &lt;br /&gt; if key=GA_UP then if y&gt;0 then y:=y-getwidth/5; &lt;br /&gt; if key=GA_DOWN then if Y&lt;(getwidth-getwidth/5&amp;#41; then y:=y+getwidth/5; &lt;br /&gt; if key=GA_FIRE then if net&amp;#91;x/5,y/5] then drawline(x,y,x+getwidth/5,y+getwidth/5&amp;#41; else &lt;br /&gt; fillrect(x,y,getwidth/5,getwidth/5&amp;#41;; &lt;br /&gt; setcolor(255,0,0&amp;#41;; &lt;br /&gt; drawrect(x,y,getwidth/5,getwidth/5&amp;#41;; &lt;br /&gt; repaint; &lt;br /&gt; until false; &lt;br /&gt; end.&lt;!--/uzc--&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--/uzcode--&gt;</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>Lincor</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-6-1</guid>
+		</item>
+		<item>
+			<title>Time</title>
+			<link>http://midletpascal.at.ua/forum/4-5-1</link>
+			<pubDate>Tue, 05 Mar 2013 20:37:55 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Описание темы: Надо протестить прогу&lt;br /&gt;Автор темы: V_O_V_A&lt;br /&gt;Автор последнего сообщения: Wladymyr&lt;br /&gt;Количество ответов: 1</description>
+			<content:encoded>Time - это моя последняя программа. Суть ее очень проста - она вычисляет время до конца урока или перерыва (для школьников). Кроме того, она также определяет время с точностью до секунд. Программа вполне закончена и готова к использованию. Но все же есть несколько проблем: &lt;br /&gt;  1. Стандартный эмулятор почему-то воспроизводит программу с постоянными миганннямы и поворотами, но на самом телефоне - все норм  . Поэтому мне нужно, чтобы кто-то протестовал ее на своем телефоне и сказал мне о результатах.   &lt;br /&gt;  2. Я понимаю, что она не совершенна (ведь такую принципе невозможно создать &lt;img src=&quot;http://s68.ucoz.net/sm/2/biggrin.gif&quot; border=&quot;0&quot; align=&quot;absmiddle&quot; alt=&quot;biggrin&quot; /&gt;  ), поэтому прошу всех небезразличных подбросить какие-то идеи, по оптимизации.  &lt;br /&gt; 3. Несмотря на все, я хотел бы виложить ее широкой общественности, но ни одного нормального сайта не нашел. Если кто-то может помочь, плс дайте ссылку. Конечно хотелось бы получить деньги за свое творение, но я буду рад выложить ее и бесплатно &lt;img src=&quot;http://s68.ucoz.net/sm/2/biggrin.gif&quot; border=&quot;0&quot; align=&quot;absmiddle&quot; alt=&quot;biggrin&quot; /&gt; . &lt;br /&gt; Вот ссылка на прогу &lt;u&gt;http://disk.yandex.ru/public/?hash=Bg3ZelTFitE%2BsNPzU3/gw8/Li6A6bMwf8UrZefFLsh8%3D&lt;/u&gt; &lt;br /&gt; Снизу есть скрины из программы (как видите язык интерфейса - украинский, хотя я не думаю, что это проблема). Прошу всех заинтересованных отписать. &lt;br /&gt; Тут скрины &lt;u&gt;https://downloader-kiev1.disk.yandex.ru/rdisk/5be0cc77e99f0b434037888abaef97ab/mpfs/CNajhhTZIh94O1GI_VfoQJMrcy4dlwknl9yPsLy32mlsJTcLT1M0-z4PtebyORNC7n7tESpTwVlcrlDyIDmOjA==?uid=0&amp;filename=screen.JPG&amp;content_type=image/jpeg&amp;disposition=inline&amp;hash=&amp;limit=0&amp;rtoken=3af48919ac245fad4452a15fbb481932&amp;rtimestamp=51362829&lt;/u&gt;</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>V_O_V_A</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-5-1</guid>
+		</item>
+		<item>
+			<title>вопрос</title>
+			<link>http://midletpascal.at.ua/forum/4-3-1</link>
+			<pubDate>Wed, 20 Feb 2013 19:56:18 GMT</pubDate>
+			<description>Форум: &lt;a href=&quot;http://midletpascal.at.ua/forum/4&quot;&gt;Вопросы по MidletPascal&lt;/a&gt;&lt;br /&gt;Автор темы: Lincor&lt;br /&gt;Автор последнего сообщения: Wladymyr&lt;br /&gt;Количество ответов: 1</description>
+			<content:encoded>я столкнулся с проблемой в коде. из этого меню почему-то не вызываются процедуры options и about: &lt;br /&gt;&lt;br /&gt; &lt;!--uzcode--&gt;&lt;div class=&quot;bbCodeBlock&quot;&gt;&lt;div class=&quot;bbCodeName&quot; style=&quot;padding-left:5px;font-weight:bold;font-size:7pt&quot;&gt;Код&lt;/div&gt;&lt;div class=&quot;codeMessage&quot; style=&quot;border:1px inset;max-height:200px;overflow:auto;height:expression(this.scrollHeight&lt;5?this.style.height:scrollHeight&gt;200?&apos;200px&apos;:&apos;&apos;+(this.scrollHeight+5)+&apos;px&apos;);&quot;&gt;&lt;!--uzc--&gt;procedure menu; &lt;br /&gt; var key,pos,i: integer; &lt;br /&gt; menu: array&amp;#91;1..5] of Image; &lt;br /&gt; begin &lt;br /&gt; // Начальная позиция в меню &lt;br /&gt; pos:=2; &lt;br /&gt; // Заполняем названия пунктов меню &lt;br /&gt; menu&amp;#91;1]:=LoadImage(&apos;/menu_fon.png&apos;&amp;#41;; &lt;br /&gt; menu&amp;#91;2]:=LoadImage(&apos;/Play.png&apos;&amp;#41;; &lt;br /&gt; menu&amp;#91;3]:=LoadImage(&apos;/Options.png&apos;&amp;#41;; &lt;br /&gt; menu&amp;#91;4]:=LoadImage(&apos;/About.png&apos;&amp;#41;; &lt;br /&gt; menu&amp;#91;5]:=LoadImage(&apos;/Exit.png&apos;&amp;#41;; &lt;br /&gt; repeat &lt;br /&gt; drawImage(menu&amp;#91;1],0,0&amp;#41;; &lt;br /&gt; // Здесь рисуем каждый элемент меню &lt;br /&gt; for i:=2 to 5 do &lt;br /&gt; begin &lt;br /&gt; if i=pos then &lt;br /&gt; begin &lt;br /&gt; SetColor(0,160,255&amp;#41;; &lt;br /&gt; FillRect(115-(getimagewidth(menu&amp;#91;i]&amp;#41;/2&amp;#41;,i*30+15,140,26&amp;#41;; &lt;br /&gt; drawImage(menu&amp;#91;i],120-(getimagewidth(menu&amp;#91;i]&amp;#41;/2&amp;#41;,i*30+20&amp;#41;; &lt;br /&gt; end &lt;br /&gt; else &lt;br /&gt; begin &lt;br /&gt; drawImage(menu&amp;#91;i],120-(getimagewidth(menu&amp;#91;i]&amp;#41;/2&amp;#41;,i*30+20&amp;#41;; &lt;br /&gt; end &lt;br /&gt; end; &lt;br /&gt; SetColor(0,0,0&amp;#41;; &lt;br /&gt; // Выводим всё на экран &lt;br /&gt; repaint; &lt;br /&gt; delay(20&amp;#41;; &lt;br /&gt; // Тут получаем нажатие на клавиши &lt;br /&gt; key:=getKeyClicked; &lt;br /&gt; key:=keyToAction(key&amp;#41;; &lt;br /&gt; // Проверяем какие клавиши нажаты &lt;br /&gt; if key=GA_UP then if pos=2 then pos:=5 else pos:=pos-1; &lt;br /&gt; if key=GA_DOWN then if pos=5 then pos:=2 else pos:=pos+1; &lt;br /&gt; if key=GA_FIRE then &lt;br /&gt; begin &lt;br /&gt; // Если переход по пункту меню - то смотрим какой пункт выбран &lt;br /&gt; // и совершаем соответствующее действие &lt;br /&gt; if pos=2 then wp_start; &lt;br /&gt; if pos=3 then options; &lt;br /&gt; if pos=4 then about; &lt;br /&gt; if pos=5 then Halt; &lt;br /&gt; end; &lt;br /&gt; until false; &lt;br /&gt; end;&lt;!--/uzc--&gt;&lt;/div&gt;&lt;/div&gt;&lt;!--/uzcode--&gt;</content:encoded>
+			<category>Вопросы по MidletPascal</category>
+			<dc:creator>Lincor</dc:creator>
+			<guid>http://midletpascal.at.ua/forum/4-3-1</guid>
+		</item>
+	</channel>
+</rss>
